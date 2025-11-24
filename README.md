@@ -214,16 +214,40 @@ Développé par l’équipe Banektek.
 
 ## 📄 Licence
 Ce projet est sous licence MIT — libre d’utilisation pour un usage éducatif ou de démonstration.
-
 ## 📸 Aperçu général de l'application web Banektek
 
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
-![alt text](image-5.png)
-![alt text](image-6.png)
-![alt text](image-7.png)
-![alt text](image-9.png)
+---
 
+# 🖥️ FRONT – Interface Client
+
+### 1️⃣ Formulaire de création de compte
+![Formulaire de création de compte](image.png)
+
+### 2️⃣ Page d’accueil (Home Page)
+![Home Page](image-2.png)
+
+### 3️⃣ Convertisseur de devises
+![Convertisseur de devises](image-3.png)
+
+### 4️⃣ Simulateur de crédit – Côté client (Front)
+![Simulateur de crédit client](image-4.png)
+
+### 5️⃣ Profil du client – Interface Front
+![Profil du client](image-6.png)
+
+### 6️⃣ Tableau de bord avec KPIs  
+*(Mes activités, mes dépenses, statistiques Retrait vs Versement)*
+![Tableau de bord KPIs](image-7.png)
+
+---
+
+# 🛠️ BACK – Interface Agent / Admin
+
+### 7️⃣ Formulaire FaceID – Authentication Agent
+![Test FaceID agent](image-1.png)
+
+### 8️⃣ Gestion des comptes – Back-office (Admin / Agent)
+![Gestion des comptes back](image-5.png)
+
+### 9️⃣ Formulaire d’ajout de crédit avec barre verte de Credit Scoring
+![Formulaire crédit scoring](image-9.png)
