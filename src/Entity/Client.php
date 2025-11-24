@@ -38,12 +38,12 @@ class Client
           $mail->isSMTP(); // Utiliser SMTP
           $mail->Host = 'smtp.gmail.com'; // Nom d'hôte du serveur SMTP
           $mail->SMTPAuth = true; // Activer l'authentification SMTP
-          $mail->Username = 'nasr.hamza@esprit.tn'; // Votre adresse email Gmail
-          $mail->Password = '211JMT5899'; // Votre mot de passe Gmail ou le mot de passe d'application si l'authentification à deux facteurs est activée
+          $mail->Username = '***'; // Votre adresse email Gmail
+          $mail->Password = '**'; // Votre mot de passe Gmail ou le mot de passe d'application si l'authentification à deux facteurs est activée
           $mail->SMTPSecure = 'tls'; // Utiliser TLS
           $mail->Port = 587; // Port pour TLS/STARTTLS
           
-          $mail->setFrom('nasr.hamza@esprit.tn', 'Banektek - Team');
+          $mail->setFrom('***', 'Banektek - Team');
           $mail->addAddress($email, $nom); // Ajouter un destinataire
           $mail->isHTML(true); // Activer le format HTML// Activer le format HTML
           $mail->SMTPDebug;
@@ -1114,7 +1114,7 @@ $mail->Port = 465; // Port SSL Gmail
 // Destinataire et expéditeur
 
 $mail->setFrom('imen.belhoula@esprit.tn','Banektek - Team');
-$mail->addAddress("nasr.hamza@esprit.tn", $nom); // Ajouter un destinataire
+$mail->addAddress("***", $nom); // Ajouter un destinataire
 $mail->Subject = 'Votre Sujet';
 
 // Contenu de l'e-mail
@@ -1816,12 +1816,12 @@ $mail->send();
             $mail->isSMTP(); // Utiliser SMTP
             $mail->Host = 'smtp.gmail.com'; // Nom d'hôte du serveur SMTP
             $mail->SMTPAuth = true; // Activer l'authentification SMTP
-            $mail->Username = 'nasr.hamza@esprit.tn'; // Votre adresse email Gmail
-            $mail->Password = '211JMT5899'; // Votre mot de passe Gmail ou le mot de passe d'application si l'authentification à deux facteurs est activée
+            $mail->Username = '***'; // Votre adresse email Gmail
+            $mail->Password = '**'; // Votre mot de passe Gmail ou le mot de passe d'application si l'authentification à deux facteurs est activée
             $mail->SMTPSecure = 'tls'; // Utiliser TLS
             $mail->Port = 587; // Port pour TLS/STARTTLS
             
-            $mail->setFrom('nasr.hamza@esprit.tn', 'Banektek - Team');
+            $mail->setFrom('***', 'Banektek - Team');
             $mail->addAddress($email, $nom); // Ajouter un destinataire
             $mail->isHTML(true); // Activer le format HTML// Activer le format HTML
             $mail->SMTPDebug;
