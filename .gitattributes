@@ -1,11 +1,21 @@
-# Ne pas compter les dépendances PHP
+
+/templates/** linguist-detectable=true
+/public/** linguist-detectable=true
+/assets/** linguist-detectable=true
+/src/** linguist-detectable=true
+
+
 /vendor/** linguist-vendored=true
-
-# Ne pas compter les fichiers générés/cache Symfony
 /var/** linguist-generated=true
-
-# Ne pas compter les assets compilés
+/node_modules/** linguist-vendored=true
 /public/build/** linguist-generated=true
 
-# Ne pas compter node_modules si tu l'as
-/node_modules/** linguist-vendored=true
+
+*.php linguist-language=PHP
+
+*.css linguist-language=CSS
+
+.js linguist-language=JavaScript
+
+
+*.twig linguist-language=HTML
