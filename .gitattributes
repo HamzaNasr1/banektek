@@ -1,0 +1,9 @@
+# Ignorer les templates Twig dans les stats
+templates/** linguist-detectable=false
+
+# Optionnel : ignorer assets compilés
+public/build/** linguist-generated=true
+
+# Forcer certains dossiers si besoin
+src/** linguist-detectable=true
+assets/** linguist-detectable=true
