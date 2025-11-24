@@ -214,3 +214,8 @@ Développé par l’équipe Banektek.
 
 ## 📄 Licence
 Ce projet est sous licence MIT — libre d’utilisation pour un usage éducatif ou de démonstration.
+
+
+![alt text](image.png)
+![alt text](image-1.png)
+[![Watch the video](https://img.youtube.com/vi/UWjHNUBa_8A/maxresdefault.jpg)](https://youtu.be/UWjHNUBa_8A)
