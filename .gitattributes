@@ -1,11 +1,11 @@
-# Ignorer les templates Twig (HTML)
-templates/* linguist-detectable=false
-templates/** linguist-detectable=false
+# Ne pas compter les dépendances PHP
+/vendor/** linguist-vendored=true
 
-# Ignorer les fichiers HTML générés
-public/*.html linguist-detectable=false
-public/** linguist-detectable=false
+# Ne pas compter les fichiers générés/cache Symfony
+/var/** linguist-generated=true
 
-# Marquer PHP (Symfony) comme langage principal
-src/** linguist-detectable=true
-public/build/** linguist-generated=true
+# Ne pas compter les assets compilés
+/public/build/** linguist-generated=true
+
+# Ne pas compter node_modules si tu l'as
+/node_modules/** linguist-vendored=true
