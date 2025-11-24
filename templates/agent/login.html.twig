@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BANEKTEK - Agent Login</title>
+    <style>
+        html {
+          height: 100%;
+        }
+        body {
+          margin:0;
+          padding:0;
+          font-family: sans-serif;
+          background: linear-gradient(#D5304B, #003883);
+        }
+
+        .login-box {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 400px;
+          padding: 40px;
+          transform: translate(-50%, -50%);
+          background: #ffffff1f;
+          box-sizing: border-box;
+          box-shadow: 0 15px 25px rgba(0,0,0,.6);
+          border-radius: 10px;
+        }
+
+        .login-box h2 {
+          margin: 0 0 30px;
+          padding: 0;
+          color: white;
+          text-align: center;
+        }
+
+        .login-box .user-box {
+          position: relative;
+        }
+
+        .login-box .user-box input {
+          width: 100%;
+          padding: 10px 0;
+          font-size: 16px;
+          color: #fff;
+          margin-bottom: 30px;
+          border: none;
+          border-bottom: 1px solid #fff;
+          outline: none;
+          background: transparent;
+        }
+
+        .login-box .user-box label {
+          position: absolute;
+          top:0;
+          left: 0;
+          padding: 10px 0;
+          font-size: 16px;
+          color: #fff;
+          pointer-events: none;
+          transition: .5s;
+        }
+
+        .login-box .user-box input:focus ~ label,
+        .login-box .user-box input:valid ~ label {
+          top: -20px;
+          left: 0;
+          color: #03e9f4;
+          font-size: 12px;
+        }
+
+        .login-box form a {
+          position: relative;
+          display: inline-block;
+          padding: 10px 20px;
+          color: #03e9f4;
+          font-size: 16px;
+          text-decoration: none;
+          text-transform: uppercase;
+          overflow: hidden;
+          transition: .5s;
+          margin-top: 40px;
+          letter-spacing: 4px;
+          
+          border-radius: 5px;
+      
+        }
+
+        .login-box form a:hover {
+          
+          color: #fff;
+          box-shadow: 0 0 5px #03e9f4,
+                      0 0 25px #03e9f4,
+                      0 0 50px #03e9f4,
+                      0 0 100px #03e9f4;
+        }
+
+        .login-box form a span {
+          position: absolute;
+          display: block;
+        }
+
+        .login-box form a span:nth-child(1) {
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, #03e9f4);
+          animation: btn-anim1 1s linear infinite;
+        }
+
+        @keyframes btn-anim1 {
+          0% {
+            left: -100%;
+          }
+          50%,100% {
+            left: 100%;
+          }
+        }
+
+        .login-box form a span:nth-child(2) {
+          top: -100%;
+          right: 0;
+          width: 2px;
+          height: 100%;
+          background: linear-gradient(180deg, transparent, #03e9f4);
+          animation: btn-anim2 1s linear infinite;
+          animation-delay: .25s;
+        }
+
+        @keyframes btn-anim2 {
+          0% {
+            top: -100%;
+          }
+          50%,100% {
+            top: 100%;
+          }
+        }
+
+        .login-box form a span:nth-child(3) {
+          bottom: 0;
+          right: -100%;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(270deg, transparent, #03e9f4);
+          animation: btn-anim3 1s linear infinite;
+          animation-delay: .5s;
+        }
+
+        @keyframes btn-anim3 {
+          0% {
+            right: -100%;
+          }
+          50%,100% {
+            right: 100%;
+          }
+        }
+
+        .login-box form a span:nth-child(4) {
+          bottom: -100%;
+          left: 0;
+          width: 2px;
+          height: 100%;
+          background: linear-gradient(360deg, transparent, #03e9f4);
+          animation: btn-anim4 1s linear infinite;
+          animation-delay: .75s;
+        }
+
+        @keyframes btn-anim4 {
+          0% {
+            bottom: -100%;
+          }
+          50%,100% {
+            bottom: 100%;
+          }
+        }
+ .btn-image {
+            display: inline-block;
+            padding: 0;
+            border: none;
+            background: url('../faceid.png') no-repeat center center;
+            background-size: contain; /* Ajustement pour afficher toute l'image */
+            width: 20px; /* Largeur du bouton */
+            height: 15px; /* Hauteur du bouton */
+            text-indent: -9999px; /* Pour masquer le texte du bouton */
+            overflow: hidden; /* Masquer toute partie de l'image qui dépasse le bouton */
+            cursor: pointer;
+            margin-left: 50px;
+        }
+  .btn-image:hover {
+            background-image: url('../faceid2.png'); /* Nouvelle image au survol */
+        }
+        /* Style pour le survol du bouton */
+        .btn-image:hover {
+            opacity: 0.8;
+        }
+.hidden-when-camera-active {
+  display: none;
+  
+}
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="login-box">
+        
+        <h2>Login</h2>
+        
+        <form action="{{ path('app_login_admin') }}" id="myForm" method="post">
+            <div class="user-box">
+                <input type="text"  name="matricule" id="matricule" required="" >
+                <label>Matricule</label>
+            </div>
+            <div class="user-box">
+                <input type="password"  name="password" id="password" required="">
+                <label>Password</label>
+            </div>
+            <a href="#" class="btn_cn" onclick="document.getElementById('myForm').submit();">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Connecter
+                <i class="fas fa-face-viewfinder"></i>
+            </a>
+  <a onclick="authenticateUser()" class="btn-image">
+               <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Face ID</a>
+        </form>
+      <div class="form-group" style="display:none;">
+            <label for="username">Matricule</label>
+            <input required="" name="agent_faceid" id="agent_faceid" type="text">
+        </div>
+
+    </div>
+    <div id="faceio-modal"></div>
+
+
+    
+  
+   <script src="https://cdn.faceio.net/fio.js"></script>
+    <script type="text/javascript">
+        // Instantiate fio.js with your application Public ID
+        const faceio = new faceIO("fioafef0");
+        function enrollNewUser(){
+                                      document.getElementById("modal_login").classList.add("hidden-when-camera-active");
+    var faceidInput = document.getElementById("agent_faceid");
+
+           // Start the facial enrollment process
+           faceio.enroll({
+                "locale": "auto", // Default user locale
+                "payload": {
+                /* The payload we want to associate with this user
+                * which is forwarded back to us upon future
+                * authentication of this particular user.*/
+                "whoami": 123456, // Example of dummy ID linked to this particular user
+                "email": "john.doe@example.com"
+                }
+            }).then(userInfo => {
+                // User Successfully Enrolled!
+                alert(
+                    `User Successfully Enrolled! Details:
+                    Unique Facial ID: ${userInfo.facialId}
+                    Enrollment Date: ${userInfo.timestamp}
+                    Gender: ${userInfo.details.gender}
+                    Age Approximation: ${userInfo.details.age}`
+                )
+                console.log(userInfo)
+                faceidInput.value =userInfo.facialId;
+                // handle success, save the facial ID, redirect to dashboard...
+            }).catch(errCode => {
+                // handle enrollment failure. Visit:
+                // https://faceio.net/integration-guide#error-codes
+                // for the list of all possible error codes
+            }).finally(() => {
+        // Masquer le formulaire à nouveau après l'authentification (ou en cas d'échec)
+        setTimeout(() => {
+            document.getElementById("modal_login").classList.remove("hidden-when-camera-active");
+        }, 1000); // Définissez le délai en millisecondes (1000 ms = 1 seconde)
+    });
+        }
+        
+      function authenticateUser() {
+   // document.getElementById("modal_login").classList.add("hidden-when-camera-active");
+    var faceidInput = document.getElementById("agent_faceid");
+
+    // Authenticate a previously enrolled user
+    faceio.authenticate({
+        "locale": "auto" // Default user locale
+    }).then(userData => {
+        console.log("Success, user identified")
+        faceidInput.value = userData.facialId;
+
+        // Grab the facial ID linked to this particular user which will be same
+        // for each of his successful future authentication. FACEIO recommend 
+        // that you rely on this Facial ID if you plan to uniquely identify 
+        // all enrolled users on your backend for example.
+        console.log("Linked facial Id: " + userData.facialId);
+        
+        // Grab the arbitrary data you have already linked (if any) to this particular user
+        // during his enrollment via the payload parameter of the enroll() method.
+        console.log("Payload: " + JSON.stringify(userData.payload)) 
+               window.location.href = "/loginadminfaceid/" + userData.facialId;
+
+        // {"whoami": 123456, "email": "john.doe@example.com"} set via enroll()
+    }).catch(errCode => {
+        // handle authentication failure. Visit:
+        // https://faceio.net/integration-guide#error-codes
+        // for the list of all possible error codes
+    }).finally(() => {
+      
+
+    });
+}
+
+    </script>
+    <script src="{{ asset('js/faceid.js') }}"></script>
+     
+</body>
+</html>

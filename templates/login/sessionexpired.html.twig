@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from adminlte.io/themes/AdminLTE/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 Jan 2024 09:59:17 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Banektek - SESSION EXPIRER{% endblock %}</title>
+
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+
+<link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+
+<link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="../dist/css/skins/style.css">
+
+<link rel="stylesheet" href="../bower_components/morris.js/morris.css">
+
+<link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
+
+<link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+<link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+<link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+</head>
+<body class="hold-transition lockscreen">
+
+<div class="lockscreen-wrapper">
+<div class="lockscreen-logo">
+<span href="../../index2.html" style="color:#003883;"><b>BANEK</b><span style="color: #D5304B;">TEK</span></spanw       >
+</div>
+
+<div class="lockscreen-name">{{"Agent : "~ agent.matricule | upper}}</div>
+
+<div class="lockscreen-item">
+
+<div class="lockscreen-image">
+<img src={{agent.photo}} alt="User Image">
+</div>
+
+
+<form class="lockscreen-credentials" action="{{ path('renew_session') }}" method="post">
+
+<div class="input-group">
+<input type="password" class="form-control" placeholder="password" id="password" name="password" style="font-color:black;">
+<div class="input-group-btn">
+<button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+</div>
+</div>
+</form>
+
+</div>
+
+<div class="help-block text-center">
+Veuillez saisir votre mot de passe pour récupérer votre session.
+</div>
+<div class="text-center">
+<a href="{{path('app_agent_login')}}">Ou connectez-vous en tant qu'un autre agent</a>
+</div>
+<div class="lockscreen-footer text-center">
+Copyright © 2024-2025 <b></b><br>
+All rights reserved
+</div>
+</div>
+
+
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+</body>
+
+
+
+
+
+
+</html>

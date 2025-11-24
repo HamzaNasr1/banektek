@@ -1,0 +1,564 @@
+
+{% extends 'base_agence.html.twig' %}
+
+{# titre de le page#}
+{% block title %}Banektek - Agent Menu{% endblock %}
+{% block autre_stylesheet
+ %}
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .error-message {
+        color: red;
+        font-style: italic;
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+</style>
+
+
+<style>
+.accordion {
+    font-family: 'Titillium Web', sans-serif;
+    min-height:0;
+    max-width: 450px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    margin: 90px 0;
+    padding:30px;
+    background: #fefffa;
+    box-shadow: 0 7px 7px 7px orange inset;       
+}
+
+.accordion h2, .accordion h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;    
+}
+
+.accordion h2 {
+    font-size: 18px;
+}
+
+.accordion ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion ul li {
+    position: relative;
+    padding-bottom: 4px;
+    padding-top: 18px;
+    border-top: 1px solid #dce7eb;   
+}
+
+.accordion ul li input[type="checkbox"] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+}
+
+.accordion ul li i {
+    position: absolute;
+    transform: translate(-6px,0);
+    margin-top: 16px;
+    right: 0;
+} 
+
+.accordion ul li input[type=checkbox]:checked ~ p {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.accordion ul li input[type="checkbox"]:checked~i::before {
+    transform: translate(2px,0) rotate(45deg);
+}
+
+.accordion ul li input[type="checkbox"]:checked~i::after {
+    transform: translate(-2px,0) rotate(-45deg);
+}
+
+.accordion ul li i::before,
+.accordion ul li i::after {
+    content: "";
+    position: absolute;
+    background: #333;
+    width: 3px;
+    height: 9px;
+}
+
+.accordion ul li i::before {
+    transform: translate(-2px,0)rotate(45deg);
+}
+
+.accordion ul li i:after {
+    transform: translate(2px, 0) rotate(-45deg);
+}
+
+.accordion p {
+    font-size: 16px;
+    color: rgba(48,69,92,0.8);
+    line-height: 26px;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 0 11px;
+    max-height: 800px;
+    margin-top: 14px;
+    opacity: 1;
+    transform: translate(0,0);
+    overflow: hidden;     
+}
+
+.accordion .transition, .accordion p, .accordion ul li i:before, .accordion ul li i:after {
+    transition: all 0.25s ease-in-out;
+}
+
+.accordion .flipIn, .accordion h1, .accordion ul li {
+    animation: flipdown 0.5s ease both;
+}
+
+.accordion ul li:nth-of-type(1) {
+    animation-delay: 0.5s;
+}
+
+.accordion ul li:nth-of-type(2) {
+    animation-delay: 0.75s;
+}
+
+.accordion ul li:nth-of-type(3) {
+    animation-delay: 1s;
+}
+
+.accordion ul li:last-of-type {
+    padding-bottom: 0;
+}
+
+@keyframes flipdown {
+    0% {
+        opacity: 0;
+        transform-origin: top center;
+        transform: rotateX(-90deg);
+    }
+    5% {
+        opacity: 1;
+    }
+    80% {
+        transform: rotateX(8deg);
+    }
+    83% {
+        transform: rotateX(6deg);
+    }
+    92% {
+        transform: rotateX(-3deg);
+    }
+    100% {
+        transform-origin: top center;
+        transform: rotateX(0deg);
+    }
+}
+
+</style>
+
+
+{% endblock %}
+{# activer sidebar elements#}
+{% block assistant_active %}{% endblock %}
+{% block gestion_clients_active %}{% endblock %}
+{% block gestion_comptes_active %}{% endblock %}
+{% block gestion_credits_active %}{% endblock %}
+{% block gestion_agence_active %}{% endblock %}
+{% block gestion_agents_active %}{% endblock %}
+{% block gestion_operations_active %}{% endblock %}
+{% block gestion_reclamations_active %}active{% endblock %}
+{% block gestion_agences_active %}{% endblock %}
+{% block gestion_convertisseur_active %}{% endblock %}
+{% block gestion_articles_active %}{% endblock %}
+{% block gestion_cartes_active %}{% endblock %}
+{# photos#}
+{% block photo %}src="../{{agent_connecter.photo}}"{% endblock %}
+{% block photo1 %}src="../{{agent_connecter.photo}}"{% endblock %}
+{% block photo2 %}src="../{{agent_connecter.photo}}"{% endblock %}
+{% block username %}{{agent_connecter.nom}}{% endblock %}
+{% block username2 %}{{agent_connecter.nom}}{% endblock %}
+{% block username3 %}{{agent_connecter.nom}}{% endblock %}
+
+
+{% block gestion %}Liste des comptes{% endblock %}
+
+
+{% block gestion2 %}Liste des comptes{% endblock %}
+{% block my_interface %}
+<section class="content">
+<!-- contenu de la page -->
+
+<div class="container">
+    <nav class="menu">
+        <ul class="main-menu">
+     
+            
+            <li class="active"><i class="fa fa-user"></i>Liste</li>
+        </ul>
+    </nav>
+
+  <article>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="box-title">Total reclamations</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button type="button" id="search-btn" class="btn btn-flat">
+                                        <i class="fa fa-search" style="color:#003883"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table class="table table-responsive-xl" id="clients-table">
+                        <thead>
+                            <tr>
+                                <th>Origine Reclamation</th>
+                                <th>Type</th>
+                                <th>Email</th>
+                                <th>Date de réclamation</th>
+                                <th>État</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reclamation in reclamations %}
+                                <tr  role="alert">
+                                    <td class="d-flex align-items-center">
+                                     {% if reclamation.getIdClient is null %}
+      <div class="img" style="background-image: url(../{dist/img/user1-128x128.jpg});"></div>
+      {% else %}
+      <div class="img" style="background-image: url(../{{reclamation.getIdClient.photo}});"></div>
+
+      {% endif %}
+      <div class="pl-3 email">
+<a href="#" style="color: blue;font-color:blue" data-toggle="modal" data-target="#modal-{{ reclamation.id }}">
+  {% if reclamation.getIdClient is null %}
+    <span>VISITEUR</span>
+{% else %}
+    <span>{{ reclamation.getIdClient.getnom ~ " " ~ reclamation.getIdClient.prenom  }}</span>
+{% endif %}
+
+</a>
+        <span> Added:{{ reclamation.getDateReclamation.format('Y-m-d') }}
+      </span>
+      </div>
+    </td>
+                                    <td>{{ reclamation.type }}</td>
+                                    <td>{{ reclamation.email}}</td>
+                                    <td>{{ reclamation.dateReclamation|date('Y-m-d H:i') }}</td>
+                                   
+                                   
+                                    <td>
+  
+{% if reclamation.etat == "Termine" %}
+    <label class="switch active" onclick="toggleAccess(this, '{{ reclamation.id }}')">
+    <span>{{ reclamation.getetat }} </span>
+        <input checked="" type="checkbox">
+        <div class="slider">
+            <div class="circle">
+                       <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path data-original="#000000" fill="currentColor" d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0"></path>
+                </g>
+            </svg>
+               <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 24 24" y="0" x="0" height="10" width="10" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path class="" data-original="#000000" fill="currentColor" d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"></path>
+                </g>
+            </svg>
+            </div>
+        </div>
+    </label>
+{% else %}
+    <label class="switch inactive" onclick="toggleAccess(this, '{{ reclamation.id }}')">
+    <span>{{ reclamation.getetat }} </span>
+        <input type="checkbox">
+        <div class="slider">
+            <div class="circle">
+                       <svg class="cross" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 365.696 365.696" y="0" x="0" height="6" width="6" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path data-original="#000000" fill="currentColor" d="M243.188 182.86 356.32 69.726c12.5-12.5 12.5-32.766 0-45.247L341.238 9.398c-12.504-12.503-32.77-12.503-45.25 0L182.86 122.528 69.727 9.374c-12.5-12.5-32.766-12.5-45.247 0L9.375 24.457c-12.5 12.504-12.5 32.77 0 45.25l113.152 113.152L9.398 295.99c-12.503 12.503-12.503 32.769 0 45.25L24.48 356.32c12.5 12.5 32.766 12.5 45.247 0l113.132-113.132L295.99 356.32c12.503 12.5 32.769 12.5 45.25 0l15.081-15.082c12.5-12.504 12.5-32.77 0-45.25zm0 0"></path>
+                </g>
+            </svg>
+             <svg class="checkmark" xml:space="preserve" style="enable-background:new 0 0 512 512" viewBox="0 0 24 24" y="0" x="0" height="10" width="10" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path class="" data-original="#000000" fill="currentColor" d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"></path>
+                </g>
+            </svg>
+            </div>
+        </div>
+    </label>
+{% endif %}
+
+
+
+
+    </td>
+
+    <td>
+   
+    <button
+   class="bin-button"
+   data-toggle="modal"
+   data-target="#modal-sup-{{
+   reclamation.id }}">
+   <svg
+      class="bin-top"
+      viewBox="0
+      0 39 7"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      >
+      <line
+         y1="5"
+         x2="39"
+         y2="5"
+         stroke="white"
+         stroke-width="4"></line>
+      <line
+         x1="12"
+         y1="1.5"
+         x2="26.0357"
+         y2="1.5"
+         stroke="white"
+         stroke-width="3"
+         ></line>
+   </svg>
+   <svg
+      class="bin-bottom"
+      viewBox="0
+      0 33 39"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      >
+      <mask
+         id="path-1-inside-1_8_19"
+         fill="white">
+         <path
+            d="M0
+            0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+            ></path>
+      </mask>
+      <path
+         d="M0
+         0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+         fill="white"
+         mask="url(#path-1-inside-1_8_19)"
+         ></path>
+      <path
+         d="M12
+         6L12 29"
+         stroke="white"
+         stroke-width="4"></path>
+      <path
+         d="M21
+         6V29"
+         stroke="white"
+         stroke-width="4"></path>
+   </svg>
+</button>
+
+ <a href="#" style="color: blue;font-color:blue" data-toggle="modal" data-target="#modalrep-{{ reclamation.id }}">
+    <span>Repondre</span>
+</a>
+</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="6">No records found</td>
+                                </tr>
+                            {% endfor %}
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<!--<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert bad and good words here</title>
+</head>
+<body>
+    <form class="" action="" method="get">
+        Bad Word <input type="text" name="bad_word" value=""><br>
+        Good Word <input type="text" name="good_word" value=""><br>
+        <button type="submit" name="insert">Insert</button>
+    </form>
+</body>
+</html>-->
+
+</div>
+<!-- contenu de la page -->
+</section>
+
+
+{% for reclamation in reclamations %}
+    {% set form = forms[loop.index0] %}
+    {% set formr = formrep[loop.index0] %}
+
+    <div class="modal fade" id="modal-{{ reclamation.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                
+                    <h3 class="box-title">Formulaire De Modification / Affichage</h3>
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i style="color:red; font-size: 20px;" class="fa fa-close"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+               
+                    {{ include('reclamation/_form_edit.html.twig', {'form': form,'reclamation': reclamation, 'button_label': 'Update'}) }}
+ 
+                    <!-- Add logic to display reclamation information here -->
+                </div>
+                <div class="modal-footer">
+                  
+                </div>
+                <div class="accordion">
+                  <h1>Reponses</h1>
+    <ul>
+            {% for reponse in reclamation.getReponses %}
+
+        <li>
+            <input type="checkbox" checked="">
+            <i ></i>
+           
+            <h2>{{reponse.getIdAgent.nom ~ " " ~reponse.getIdAgent.prenom}}</h2>
+            <p>{{reponse.message}}.</p>
+        </li>
+       {{include('reponse/_delete_form.html.twig')}}
+          
+                        {% else  %}
+ <li>
+           
+            <h2>Aucune Reponse</h2>
+   
+        </li>
+                          {% endfor %}
+
+
+       
+    </ul>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-sup-{{ reclamation.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="box-title">Suppression</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i style="color:red; font-size: 20px;" class="fa fa-close"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>Êtes-vous sûr de vouloir supprimer cette réclamation ?</h4>
+                    <form action="{{ path('app_reclamation_delete', {'id': reclamation.id}) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reclamation.id) }}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Attention :</strong> La suppression de la réclamation est irréversible. Assurez-vous de vérifier attentivement avant de procéder.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="modal fade" id="modalrep-{{ reclamation.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                
+                    <h3 class="box-title">Repondre a la Reclamation de 
+                        {% if reclamation.getIdClient() is not null %}
+                            {{ reclamation.getIdClient().nom }} {{ reclamation.getIdClient().prenom }}
+                        {% else %}
+                            Visiteur
+                        {% endif %}
+                    </h3>
+                    
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i style="color:red; font-size: 20px;" class="fa fa-close"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+               <div class="form-group">
+          {{ include('reponse/_form.html.twig', {'formr': formr, 'reclamation_id': reclamation.id}) }}
+
+
+    
+                        </div>
+                  
+ 
+                    <!-- Add logic to display reclamation information here -->
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+
+{% endfor %}
+{% endblock %}
+
+{% block autre_script%}
+
+<script>  // Récupérer l'élément <li> par son ID
+  var liAjouter = document.getElementById("ajouter");
+
+  // Ajouter un gestionnaire d'événements de clic
+  liAjouter.addEventListener("click", function() {
+    // Rediriger l'utilisateur vers admin.php
+    window.location.href = "{{ ('new') }}";
+  });</script>
+
+<script>
+    function toggleAccess(element, reclamationId) {
+        // Rediriger vers la route appropriée en fonction de l'état de la case à cocher
+        var isChecked = element.querySelector('input').checked;
+        var path = isChecked ? "{{ path('reclamation_activer', {'id': 'recId'}) }}" : "{{ path('reclamation_desactiver', {'id': 'recId'}) }}";
+        window.location.href = path.replace('recId', reclamationId);
+    }
+</script>
+
+
+
+
+
+{% endblock %}
+
+

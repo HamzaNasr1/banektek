@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Creative Studio landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Creative Studio | Free Bootstrap 4.3.x template</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="{{ asset('assets/vendors/themify-icons/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('loginform/login2.css') }}">
+    <!-- Bootstrap + Creative Studio main styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/creative-studio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/simulateur.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/simulator2.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" media="all" href="{{ asset('sticky/css/zitouna.css')}}">
+    <link rel="stylesheet" href="{{ asset('sticky/css/style.css')}}">
+    <style>
+      a.nav-link:hover {
+        color: #ff214f !important;
+        transition: 0.3s;
+      }
+
+      .form-container {
+        background: linear-gradient(#212121, #212121) padding-box,
+          linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+        border: 2px solid transparent;
+        padding: 32px 24px;
+        font-size: 14px;
+        font-family: inherit;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-sizing: border-box;
+        border-radius: 16px;
+        background-size: 200% 100%;
+        animation: gradient 5s ease infinite;
+      }
+
+      @media screen and (max-width: 600px) {
+        .form-container {
+          width: 95%;
+          max-width: 400px;
+          /* Cette règle assure que la largeur maximale reste de 400px même si l'écran est plus petit */
+        }
+      }
+
+      /* Pour les écrans de plus de 600px de largeur */
+      @media screen and (min-width: 601px) {
+        .form-container {
+          width: 400px;
+        }
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
+
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .form-container button:active {
+        scale: 0.95;
+      }
+
+      .form-container .form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .form-container .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .form-container .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #717171;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .form-container .form-group input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+        color: #fff;
+        font-family: inherit;
+        background-color: transparent;
+        border: 1px solid #414141;
+      }
+
+      .form-container .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+        resize: none;
+        color: #fff;
+        height: 96px;
+        border: 1px solid #414141;
+        background-color: transparent;
+        font-family: inherit;
+      }
+
+      .form-container .form-group input::placeholder {
+        opacity: 0.5;
+      }
+
+      .form-container .form-group input:focus {
+        outline: none;
+        border-color: #e81cff;
+      }
+
+      .form-container .form-group textarea:focus {
+        outline: none;
+        border-color: #e81cff;
+      }
+
+      .form-container .form-submit-btn {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        align-self: flex-start;
+        font-family: inherit;
+        color: #717171;
+        font-weight: 600;
+        width: 40%;
+        background: #313131;
+        border: 1px solid #414141;
+        padding: 12px 16px;
+        font-size: inherit;
+        gap: 8px;
+        margin-top: 8px;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+
+      .form-container .form-submit-btn:hover {
+        background-color: #fff;
+        border-color: #fff;
+      }
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <!-- Page Navigation -->
+    <nav class="navbar custom-navbar navbar-expand-lg navbar-dark" data-spy="affix" data-offset-top="20">
+      <div class="container">
+        <a class="navbar-brand" href="{{ asset('#') }}">
+          <img id="navbarImage" src="{{ asset('assets/imgs/logo.png') }}" alt="Description de l'image">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#service">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonial">Testimonial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <div id="mainButton">
+                <a class="nav-link" onclick="openForm()" href="#">Login</a>
+                <div class="modal header">
+                  <div class="close-button" onclick="closeForm()">x</div>
+                  <div class="form-container">
+                    <img src="{{ asset('assets/imgs/logo.png') }}" alt="Logo">
+                    <form action="{{ path('app_login') }}" method="post">
+                      <div class="form-group">
+                        <label for="username">Nom d'utilisateur</label>
+                        <input required="" name="username" id="username" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input required="" name="password" id="password" type="password">
+                      </div>
+                      <button type="submit" class="form-submit-btn">Submit</button>
+                    </form>
+                  </div>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   <div class="sticky-menu nav-down">
+		<ul>
+		<li>
+  <a href="{{path('app_convertisseur')}}" class="convertisseur" style="color:white!important;">Convertisseur</a>
+		</li>
+	<li>
+  <a href="{{path('app_simulateur')}}" class="simulateur" style="color:white!important;" >Simulateur</a>
+		</li>
+	<li>
+  <a href="{{path('app_agence_map')}}" class="nos-agences" style="color:white!important;" >Nos Agences</a>
+		</li>
+  </ul>
+  </div>
+    <!-- End Of Page Navigation -->
+    <!-- Page Header -->
+    <header class="header">
+      <div class="overlay">
+        <h6 class="subtitle">بانكتك</h6>
+        <h1 class="title">B A N E K T E K</h1>
+        <div class="buttons text-center">
+          <a href="{{ asset('#service') }}" class="btn btn-primary rounded w-lg btn-lg my-1">Our Service</a>
+          <a href="{{ asset('#contact') }}" class="btn btn-outline-light rounded w-lg btn-lg my-1">Contact Us</a>
+        </div>
+      </div>
+    </header>
+    <!-- End Of Page Header -->
+    <!-- Box -->
+    <!-- End of Box -->
+    <!-- Blog Section -->
+    <div id="block-banekteksimulateur">
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col-12">
+            <a href="index.html" class="back-link">Retour</a>
+            <div id="userTypeTabs" class="simulator-tabs usertype-tabs">
+              <div id="businessTab">
+                <form class="container">
+                  <input autocomplete="off" data-drupal-selector="form-alysfsqh4ccxoxxydmo8ed6n-g8knrnyvvcmgjv3gas" type="hidden" name="form_build_id" value="form-alYsfsqh4cCXoxxYDmO8Ed6n-g8KnRnYVvcmgJv3GAs" />
+                  <input data-drupal-selector="edit-banektek-simulator-business-form" type="hidden" name="form_id" value="banektek_simulator_business_form" />
+                  <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                      <div class="simulator-header">
+                        <h2>Simulez votre crédit avec HexaDev</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-10 mx-auto">
+                      <div id="edit-businesssimulationtype">
+                        <div class="js-form-item form-item js-form-type-radio form-item-businesssimulationtype js-form-item-businesssimulationtype">
+                          <input data-drupal-selector="edit-businesssimulationtype-14" type="radio" id="edit-businesssimulationtype-14" name="businesssimulationtype" value="14" class="form-radio" />
+                          <label for="edit-businesssimulationtype-14" class="option checked">
+                            <img src="{{asset('images/Ijara_akkarat.png')}}" alt="image" />
+                            <h4>Crédit Agricole</h4>
+                          </label>
+                        </div>
+                        <div class="js-form-item form-item js-form-type-radio form-item-businesssimulationtype js-form-item-businesssimulationtype">
+                          <input data-drupal-selector="edit-businesssimulationtype-15" type="radio" id="edit-businesssimulationtype-15" name="businesssimulationtype" value="15" class="form-radio" />
+                          <label for="edit-businesssimulationtype-15" class="option">
+                            <img src="{{asset('images/financements-vehicules.png')}}" alt="image" />
+                            <h4>Credit Automobile</h4>
+                          </label>
+                        </div>
+                        <div class="js-form-item form-item js-form-type-radio form-item-businesssimulationtype js-form-item-businesssimulationtype">
+                          <input data-drupal-selector="edit-businesssimulationtype-16" type="radio" id="edit-businesssimulationtype-16" name="businesssimulationtype" value="16" class="form-radio" />
+                          <label for="edit-businesssimulationtype-16" class="option">
+                            <img src="{{asset('images/Ijara_moueddet_mehnia.png')}}" alt="image" />
+                            <h4>Crédit Commercial</h4>
+                          </label>
+                        </div>
+                        <div class="js-form-item form-item js-form-type-radio form-item-businesssimulationtype js-form-item-businesssimulationtype">
+                          <input data-drupal-selector="edit-businesssimulationtype-17" type="radio" id="edit-businesssimulationtype-17" name="businesssimulationtype" value="17" class="form-radio" />
+                          <label for="edit-businesssimulationtype-17" class="option">
+                            <img src="{{asset('images/financement-autres-achats.png')}}" alt="image" />
+                            <h4>Crédit Etudiant</h4>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-10 mx-auto">
+                      <div class="simulator-infos">
+                        <div id="simulator-title-business" class="title"></div>
+                        <div class="infos">
+                          <div class="item">
+                            <span class="content">Durée Maximale</span>
+                            <span class="label" id="max_period_business"></span>
+                          </div>
+                          <div class="item">
+                            <span class="content">Apport propre exigé</span>
+                            <span class="label" id="apport_propre_business"></span>
+                          </div>
+                          <div class="item">
+                            <span class="content">Plafond du Financement</span>
+                            <span class="label" id="plafond_business"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="b-simulator">
+                        <div class="simulator-form">
+                          <div class="simulator-content">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-select form-item-cible js-form-item-cible">
+                                    <label class="col-sm-5" for="edit-cible">Catégorie :</label>
+                                    <select class="col-sm-7 form-control form-select" data-drupal-selector="edit-cible" id="edit-cible" name="cible">
+                                      <option value="tn" selected="selected">Envoyer demande</option>
+                                      <option value="tre">Simulation uniquement</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-select form-item-car-type js-form-item-car-type" style="display: none;">
+                                    <label class="col-sm-6" for="edit-car-type">Type de véhicule *:</label>
+                                    <select class="col-sm-6 form-control form-select" data-drupal-selector="edit-car-type" id="edit-car-type" name="car_type">
+                                      <option value="1" selected="selected">Neuf</option>
+                                      <option value="2">Occasion</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-number form-item-car-age js-form-item-car-age" data-suffix="ans" style="display: none;">
+                                    <label class="col-sm-6" for="edit-car-age">Âge du véhicule * :</label>
+                                    <input class="col-sm-6 form-control form-number" min="1" placeholder="1" data-drupal-selector="edit-car-age" type="number" id="edit-car-age" name="car_age" value="" step="1">
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-number form-item-nb-pax js-form-item-nb-pax" data-suffix="per" style="display: none;">
+                                    <label class="col-sm-6" for="edit-nb-pax">Nombre de personnes *:</label>
+                                    <input class="col-sm-6 form-control form-number" min="1" placeholder="1" data-drupal-selector="edit-nb-pax" type="number" id="edit-nb-pax" name="nb_pax" value="" step="1">
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-textfield form-item-acquisition-price-input js-form-item-acquisition-price-input" data-suffix="DT">
+                                    <label class="col-sm-6" for="edit-acquisition-price-input">Total Prix Acquisition *:</label>
+                                    <input class="col-sm-6 form-control form-text" min="0" placeholder="0" data-drupal-selector="edit-acquisition-price-input" type="text" id="edit-acquisition-price-input" name="acquisition_price_input" value="" size="60" maxlength="128">
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-textfield form-item-min-capital-input js-form-item-min-capital-input" data-suffix="DT">
+                                    <label class="col-sm-6" for="edit-min-capital-input">Apport Propre :</label>
+                                    <input class="col-sm-6 form-control form-text" min="0" placeholder="0" data-drupal-selector="edit-min-capital-input" aria-describedby="edit-min-capital-input--description" type="text" id="edit-min-capital-input" name="min_capital_input" value="" size="60" maxlength="128">
+                                    <div id="edit-min-capital-input--description" class="description">(minimum : 20%)</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-textfield form-item-monthly-net-income js-form-item-monthly-net-income" data-suffix="DT">
+                                    <label class="col-sm-6" for="edit-monthly-net-income">Revenu brut *:</label>
+                                    <input class="col-sm-6 form-control form-text" min="0" placeholder="0" data-drupal-selector="edit-monthly-net-income" type="text" id="edit-monthly-net-income" name="monthly_net_income" value="" size="60" maxlength="128">
+                                  </div>
+                                </div>
+                                <div class="item">
+                                  <div class="row js-form-item form-item js-form-type-textfield form-item-monthly-other-financing js-form-item-monthly-other-financing" data-suffix="DT">
+                                    <label class="col-sm-6" for="edit-monthly-other-financing">Mensualité Autres Financements :</label>
+                                    <input class="col-sm-6 form-control form-text" min="0" placeholder="0" data-drupal-selector="edit-monthly-other-financing" type="text" id="edit-monthly-other-financing" name="monthly_other_financing" value="" size="60" maxlength="128">
+                                  </div>
+                                </div>
+                                <div class="item item-range">
+                                  <div class="row js-form-item form-item js-form-type-number form-item-duration-input js-form-item-duration-input" data-suffix="ans">
+                                    <label class="col-sm-6" for="edit-duration-input">Durée de Remboursement *:</label>
+                                    <input class="col-sm-6 form-control form-number" min="1" placeholder="1" data-input="duration_input" data-drupal-selector="edit-duration-input" type="number" id="edit-duration-input" name="duration_input" value="1" step="1" max="25">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="simulator-bottom">
+                            <div class="row">
+                              <span class="msg-valdiation">* champs obligatoires </span>
+                              <div class="actions">
+                                <input id="b_id_vehicule_input" data-drupal-selector="edit-b-id-vehicule-input" type="hidden" name="b_id_vehicule_input" value="" />
+                                <input id="b_marque_input" data-drupal-selector="edit-b-marque-input" type="hidden" name="b_marque_input" value="" />
+                                <input id="b_finition_input" data-drupal-selector="edit-b-finition-input" type="hidden" name="b_finition_input" value="" />
+                                <input id="b_modele_input" data-drupal-selector="edit-b-modele-input" type="hidden" name="b_modele_input" value="" />
+                                <input id="b_source_input" data-drupal-selector="edit-b-source-input" type="hidden" name="b_source_input" value="" />
+                                <input type="button" id="edit-reset-button-business" value="Effacer" class="button btn btn-outline-dark" name="op" data-drupal-selector="edit-reset-button-business" />
+                                <input class="btn btn-secondary button js-form-submit form-submit" style="background:linear-gradient(140deg, #306ee8 0%, #3038e8 100%);"  id="banektek_simulator_business_submit" name="submit_banektek_simulator_submit" value="Simuler" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="simulatorResult1" class="row simulator-result" style="display: none;">
+                    <div class="col-md-12">
+                      <div class="top-result">
+                        <div class="title-result">
+                          <h2>Résultat</h2>
+                        </div>
+                      </div>
+                      <div class="row simulator-content-result">
+                        <div class="col-lg-12 simulator-result-calcul">
+                          <div class="results">
+                            <div class="res-item">
+                              <span class="icon monthly-repayment"></span>
+                              <h3>Remboursement Mensuel</h3>
+                              <span class="res-val " id="monthly-1"></span>
+                              <div class="hidden">
+                                <span class="res-val" id="monthly-1euro"></span>
+                                <span><b></b>  </span>
+                              </div>
+                            </div>
+                            <div class="res-item">
+                              <span class="icon funding-request"></span>
+                              <h3>Financement Sollicité</h3>
+                              <span class="res-val " id="fin_sol"></span>
+                              <div class="hidden">
+                                <span class="res-val">0 €</span>
+                                <span>Soit <b>48 100</b> DT </span>
+                              </div>
+                            </div>
+                            <div class="res-item">
+                              <span class="icon study-cost"></span>
+                              <h3>Frais d'étude de Dossier</h3>
+                              <span class="res-val " id="frais"></span>
+                              <div class="hidden">
+                                <span class="res-val">281 €</span>
+                                <span>Soit <b>962</b> DT </span>
+                              </div>
+                            </div>
+                            <div class="res-item">
+                              <span class="icon monthly-refund-capacity"></span>
+                              <h3>Taux d'Endettement Mensuel</h3>
+                              <span class="res-val green">16.65 % <span class="res-cmr green">Suffisant</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                     
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Blog Section -->
+    <section class="has-bg-img py-0">
+      <div class="container">
+        <div class="footer">
+          <div class="footer-lists">
+            <ul class="list">
+              <li class="list-head">
+                <h6 class="font-weight-bold">ABOUT US</h6>
+              </li>
+              <li class="list-body">
+                <a href="#" class="logo">
+                  <img src="{{ asset('assets/imgs/logo.png') }}" width="35" height="13" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, Creative studio Landing page">
+                  <h6>Creative Studio</h6>
+                </a>
+                <p>Hexadev Bank, votre partenaire de confiance dans le monde bancaire. Nous nous engageons à offrir des services financiers fiables et transparents pour construire un avenir financier solide.</p>
+                <p class="mt-3"> Copyright <script>
+                    document.write(new Date().getFullYear())
+                  </script> &copy; <a class="d-inline text-primary" href="http://www.devcrud.com">Hexadev</a>
+                </p>
+              </li>
+            </ul>
+            <ul class="list">
+              <li class="list-head">
+                <h6 class="font-weight-bold">USEFUL LINKS</h6>
+              </li>
+              <li class="list-body">
+                <div class="row">
+                  <div class="col">
+                    <a href="#about">About</a>
+                    <a href="#service">Service</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#testmonail">Testimonial</a>
+                  </div>
+                  <div class="col">
+                    <a href="#team">Team</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#">Faq</a>
+                    <a href="#">Privacy Policy</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="list">
+              <li class="list-head">
+                <h6 class="font-weight-bold">CONTACT INFO</h6>
+              </li>
+              <li class="list-body">
+                <p>Contact us and we'll get back to you within 24 hours.</p>
+                <p>
+                  <i class="ti-location-pin"></i> 15 Pôle technologique El Ghazela, Esprit
+                </p>
+                <p>
+                  <i class="ti-email"></i> hexadev@esprit.tn
+                </p>
+                <div class="social-links">
+                  <a href="javascript:void(0)" class="link">
+                    <i class="ti-facebook"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="link">
+                    <i class="ti-twitter-alt"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="link">
+                    <i class="ti-google"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="link">
+                    <i class="ti-pinterest-alt"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="link">
+                    <i class="ti-instagram"></i>
+                  </a>
+                  <a href="javascript:void(0)" class="link">
+                    <i class="ti-rss"></i>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+   document.addEventListener("DOMContentLoaded", function() {
+    const simulerButton = document.getElementById("banektek_simulator_business_submit");
+    const simulatorResult1 = document.getElementById("simulatorResult1");
+
+    simulerButton.addEventListener("click", function() {
+        // Show the simulatorResult1 div
+        simulatorResult1.style.display = "block"; //affichage 
+
+        // Get the input values
+        const acquisitionPrice = parseFloat(document.getElementById("edit-acquisition-price-input").value);
+        const minCapital = parseFloat(document.getElementById("edit-min-capital-input").value);
+        const duree = parseFloat(document.getElementById("edit-duration-input").value) * 12; // Convert duration to months
+        const taux = 0.1; // Example interest rate
+
+        // Calculate monthly payment
+        const mensualite = (acquisitionPrice * taux) / (1 - Math.pow(1 + taux, -duree));
+
+        // Calculate frais (1% of the acquisition price)
+        const frais = acquisitionPrice * 0.01;
+
+        // Calculate fin_sol (acquisition price minus min capital)
+        const fin_sol = acquisitionPrice - minCapital;
+
+        // Update HTML elements with new values
+        document.getElementById("monthly-1").innerHTML = mensualite.toFixed(2) + " DT";
+        document.getElementById("frais").innerHTML = frais.toFixed(2) + " DT";
+        document.getElementById("fin_sol").innerHTML = fin_sol.toFixed(2) + " DT";
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const simulerButton = document.getElementById("edit-reset-button-business");
+    const simulatorResult1 = document.getElementById("simulatorResult1");
+
+    simulerButton.addEventListener("click", function() {
+        // Show the simulatorResult1 div
+        simulatorResult1.style.display = "none";
+    });
+});
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Define the values for different credit types
+        const creditValues = {
+          "14": { // Ijara Mouaddet Ennakl
+            "maxPeriod": "10 Ans",
+            "apportPropre": "20%",
+            "plafond": "160 000"
+          },
+          "15": { // Ijara Mouaddet Tebbia
+            "maxPeriod": "7 Ans",
+            "apportPropre": "Selon la puissance fiscale",
+            "plafond": "250 000"
+          },
+          "16": { // Ijara Mouaddet Mehnia
+            "maxPeriod": "3 ans",
+            "apportPropre": "250 DT / Personne",
+            "plafond": "100 000"
+          },
+          "17": { // Ijara Akkarat
+            "maxPeriod": "25 ans",
+            "apportPropre": "0%",
+            "plafond": "Non Plafonné"
+            
+          }
+        };
+        // Get radio buttons and label elements
+        const radioButtons = document.querySelectorAll('input[name="businesssimulationtype"]');
+        const maxPeriodLabel = document.getElementById('max_period_business');
+        const apportPropreLabel = document.getElementById('apport_propre_business');
+        const plafondLabel = document.getElementById('plafond_business');
+        // Add event listener to each radio button
+        radioButtons.forEach(function(radioButton) {
+          radioButton.addEventListener("change", function() {
+            // Get the selected credit type
+            const selectedCreditType = this.value;
+            // Update values based on the selected credit type
+            maxPeriodLabel.textContent = creditValues[selectedCreditType].maxPeriod;
+            apportPropreLabel.textContent = creditValues[selectedCreditType].apportPropre;
+            plafondLabel.textContent = creditValues[selectedCreditType].plafond;
+          });
+        });
+      });
+      ///////////////////////////////////
+    </script>
+    <!-- core  -->
+    <script src="{{ asset('assets/vendors/jquery/jquery-3.4.1.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap/bootstrap.bundle.js') }}"></script>
+    <!-- bootstrap affix -->
+    <script src="{{ asset('assets/vendors/bootstrap/bootstrap.affix.js') }}"></script>
+    <!-- Creative Studio js -->
+    <script src="{{ asset('assets/js/creative-studio.js') }}"></script>
+    <script src="{{ asset('loginform/login2.js') }}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Fetch the JSON data
+        fetch('https://v6.exchangerate-api.com/v6/af05f542d22f61006a55ead9/latest/USD').then(response => response.json()).then(data => {
+          // Extract conversion rates from the JSON data
+          const conversionRates = data.conversion_rates;
+          // Function to convert amount from TND to selected currency
+          function convertCurrency() {
+            const amount = parseFloat(document.getElementById('edit-amount').value);
+            const currencyTo = document.getElementById('edit-currencyto').value;
+            // Check if the selected currency is TND
+            if (currencyTo === 'TND') {
+              // If converting to TND, the result is the same as the input amount
+              const convertedAmount = amount;
+              // Update the result in the div
+              const resultDiv = document.querySelector('.converter-result');
+              resultDiv.innerHTML = `
+																												
+																																						<div class="result">
+																																							<div>${convertedAmount.toFixed(2)} 
+																														
+																																								<span class="currency">TND</span>
+																																							</div>
+																																						</div>`;
+            } else {
+              // Convert amount from TND to selected currency
+              const exchangeRate = conversionRates[currencyTo];
+              if (exchangeRate) {
+                const tndExchangeRate = 1 / conversionRates['TND']; // Get the exchange rate for TND
+                const convertedAmount = amount * tndExchangeRate * exchangeRate;
+                // Update the result in the div
+                const resultDiv = document.querySelector('.converter-result');
+                resultDiv.innerHTML = `
+																												
+																																						<div class="result">
+																																							<div>${convertedAmount.toFixed(2)} 
+																														
+																																								<span class="currency">${currencyTo}</span>
+																																							</div>
+																																						</div>`;
+              } else {
+                console.error('Exchange rate not available for selected currency');
+              }
+            }
+          }
+          // Event listener for form submission
+          document.getElementById('edit-submit-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            convertCurrency(); // Call the conversion function
+          });
+          document.getElementById('edit-amount').addEventListener('input', convertCurrency);
+        }).catch(error => console.error('Error fetching data:', error));
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Fetch the JSON data
+        fetch('https://v6.exchangerate-api.com/v6/af05f542d22f61006a55ead9/latest/USD').then(response => response.json()).then(data => {
+            // Extract conversion rates from the JSON data
+            const conversionRates = data.conversion_rates;
+
+            function updateExchangeRates(conversionRates) {
+              // Select all elements with the class .court-devise
+              const currencyElements = document.querySelectorAll('.court-devise');
+              //const tndExchangeRate = conversionRates['TND']; // Get the exchange rate for TND
+              const tndExchangeRate = 1 / conversionRates['TND']; // Get the exchange rate for TND
+              // Iterate over each currency element
+              currencyElements.forEach(row => {
+                  // Get the currency code from the element
+                  const currencyCode = row.textContent.trim();
+                  // Check if the currency code exists in the conversion rates data
+                  if (conversionRates[currencyCode]) {
+                    // Update the exchange rate for the currency
+                    const exchangeRateElement = row.nextElementSibling.nextElementSibling;
+                    const exchangeRateElementsell = row.nextElementSibling.nextElementSibling.nextElementSibling;
+                    if (currencyCode === 'EUR') {
+                      exchangeRateElement.textContent = 3.44; //(conversionRates[currencyCode] / tndExchangeRate);
+                      exchangeRateElementsell.textContent = 3.34; //(conversionRates[currencyCode] * tndExchangeRate ).toFixed(3);}
+                    } else {
+                      exchangeRateElement.textContent = (conversionRates[currencyCode] / tndExchangeRate).toFixed(2);
+                      exchangeRateElementsell.textContent = (conversionRates[currencyCode] * tndExchangeRate).toFixed(2);
+                    }
+                  }
+                } else {
+                  console.error('Exchange rate not available for currency:', currencyCode);
+                }
+              });
+          }
+          // Example usage:
+          updateExchangeRates(conversionRates);
+          // Optionally, you can set up a timer to periodically update the exchange rates
+          // setInterval(updateExchangeRates, 60000); // Update every minute
+        }).catch(error => console.error('Error fetching data:', error));
+      });
+    </script>
+  </body>
+</html>

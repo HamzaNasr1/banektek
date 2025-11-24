@@ -1,0 +1,36 @@
+{% extends 'base_client.html.twig' %}
+{% block photo %}src="../{{client.photo}}"{% endblock %}
+{% block photo2 %}src="../{{client.photo}}"{% endblock %}
+{% block photo3 %}src="../{{client.photo}}"{% endblock %}
+{% block tableau_active %}{% endblock %}
+{% block tableau_compte %}{% endblock %}
+{% block tableau_carte %}{% endblock %}
+{% block tableau_reclamation %}active{% endblock %}
+{% block tableau_credit %}{% endblock %}
+{% block tableau_cheque %}{% endblock %}
+{% block tableau_virement %}{% endblock %}
+{% block username %}{{client.nom}}{% endblock %}
+{% block username2 %}{{client.nom}}{% endblock %}
+{% block username3 %}{{client.nom ~" "~ client.prenom}}{% endblock %}
+
+
+
+
+{% block body %}
+            <section class="content">
+                <!-- contenu de la page -->
+
+                <div class="container">
+                    <nav class="menu">
+                        <button style="background-color:#003883">Mes Reclamations</button>
+                    </nav>
+    {{ include('reclamation/_formclient.html.twig') }}
+                </div>
+                <!-- contenu de la page -->
+            </section>
+
+        </div>
+
+{% endblock %}
+
+

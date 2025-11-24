@@ -1,0 +1,9 @@
+   {{ form_start(formr) }}
+    <div class="form-group">
+        {{ form_widget(formr.message, {'attr': {'class': 'form-control form-control-lg', 'placeholder': 'Reponse'}}) }}
+    </div>
+    <!-- Add hidden input field for article ID -->
+  <button type="submit" class="{{ button_css|default('submitbtn') }}">
+                    <i class="fa fa-plus"></i> {{ button_label|default('Repondre'|trans) }}
+                </button>
+{{ form_end(formr) }}

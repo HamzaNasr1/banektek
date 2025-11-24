@@ -1,0 +1,136 @@
+   
+    <div class="row">
+        <div class="">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Formulaire D'ajout</h3>
+                </div>
+                <div class="box-body">
+                   {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'myForm'}}) }}
+<!-- Date de Publication -->
+<div class="row">
+    <!-- Titre -->
+    <div class="col-md-12">
+        <div class="form-group">
+            {{ form_label(form.titre) }}
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'id': 'titreInput'}}) }}
+            </div>
+            <div class="error-message" id="titreError"></div>
+             {% if form_errors(form.titre) %}
+                                    <div class="alert alert-danger">
+                                        {{ form_errors(form.titre) }}
+                                    </div>
+                                {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Contenu -->
+    <div class="col-md-12">
+        <div class="form-group">
+            {{ form_label(form.contenu) }}
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-align-justify"></i></span>
+                {{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'id': 'contenuInput'}}) }}
+            </div>
+             {% if form_errors(form.contenu) %}
+                                    <div class="alert alert-danger">
+                                        {{ form_errors(form.contenu) }}
+                                    </div>
+                                {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Image -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            {{ form_label(form.image) }}
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-image"></i></span>
+                {{ form_widget(form.image, {'attr': {'class': 'form-control', 'id': 'fileInput', 'accept': '.jpg, .jpeg, .png'}}) }}
+            </div>
+             {% if form_errors(form.image) %}
+                                    <div class="alert alert-danger">
+                                        {{ form_errors(form.image) }}
+                                    </div>
+                                {% endif %}
+        </div>
+    </div>
+    <!-- Id_agent -->
+    
+</div>
+<!-- Other form fields... -->
+
+<!-- Submit button -->
+<div class="row">
+    <button type="submit" class="{{ button_css|default('submitbtn') }}">
+        <i class="fa fa-plus"></i> {{ button_label|default('Ajouter'|trans) }}
+    </button>
+</div>
+{{ form_end(form) }}
+
+<script>
+
+    function validateForm() {
+        var titreInput = document.getElementById('article_titre');
+        var contenuInput = document.getElementById('article_contenu');
+        var titreError = document.getElementById('titreError');
+        var contenuError = document.getElementById('contenuError');
+        
+        if (titreInput.value.trim() === '') {
+            titreError.textContent = 'Titre is required';
+            return false;
+        } else {
+            titreError.textContent = '';
+        }
+        
+        if (contenuInput.value.trim() === '') {
+            contenuError.textContent = 'Contenu is required';
+            return false;
+               } 
+         else if (contenuInput.value.trim().length < 150) {
+            contenuError.textContent = 'Contenu must be at least 150 characters';
+            return false;
+        } else {
+            contenuError.textContent = '';
+        }
+
+        var idAgentValue = document.getElementById('article_id_agent').value;
+        var imageInput = document.getElementById('article_image');
+        var imageError = document.getElementById('imageError');
+        
+        // If ID chef d'agence is selected and no image is submitted, show the image error
+        if (idAgentValue === 'Chef d\'agence' && !imageInput.files.length) {
+            imageError.textContent = 'Image is required for ID chef d\'agence';
+            return false;
+        } else {
+            imageError.textContent = '';
+        }
+        
+        // If all validations pass, allow form submission
+        return true;
+    }
+
+    // Add event listener to the form for form submission
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        // Validate the form before submission
+        if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+    
+</script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+                    </article>

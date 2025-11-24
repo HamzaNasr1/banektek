@@ -1,0 +1,382 @@
+<article>
+    <div class="row">
+        <div class="col-md-12"> {# Ajout d'une classe "col-md-12" pour occuper toute la largeur #}
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">Formulaire D'ajout</h3>
+                </div>
+                <div class="box-body">
+                    {# Render each form field manually #}
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    <div class="row">
+                     <div class="col-md-6">
+                            <div class="form-group">
+                               <label for="credit_id_compte" class="required">Compte</label>
+                               <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+    {{ form_widget(form.id_compte, {
+        'attr': {
+            'class': 'form-control',
+            'placeholder': 'Prénom',
+            'onchange': 'updateAgeFromCompte()'
+        }
+    }) }}
+</div>
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.montant) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-dollar "></i></span>
+                                    {{ form_widget(form.montant, {'attr': {'class': 'form-control', 'placeholder': '30 000'}}) }}
+                                </div>
+                                  {% if form_errors(form.montant) %}
+                                    <div class="alert alert-danger">
+                                        {{ form_errors(form.montant) }}
+                                    </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                       <!--callmd6-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.duree) }}
+                                <small>(nombre des echeances)</small>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                    {{ form_widget(form.duree, {'attr': {'class': 'form-control', 'placeholder': 'XX'}}) }}
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.date_debut) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.date_debut, {'attr': {'class': 'form-control', 'placeholder': 'Date de naissance', 'type': 'date'}}) }}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.type) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-list-ul"></i></span>
+                                    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.taux) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-line-chart"></i></span>
+{{ form_widget(form.taux, {'attr': {'class': 'form-control', 'placeholder': '', 'disabled': 'disabled'}}) }}
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.apport_propre) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa  fa-chevron-right"></i></span>
+                                    {{ form_widget(form.apport_propre, {'attr': {'class': 'form-control'}}) }}
+                               </div>
+                               {% if form_errors(form.apport_propre) %}
+                                    <div class="alert alert-danger">
+                                        {{ form_errors(form.apport_propre) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.revenu_propre) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-area-chart"></i></span>
+                                    {{ form_widget(form.revenu_propre, {'attr': {'class': 'form-control', 'placeholder': 'revenu propre'}}) }}
+                                </div>
+                                {% if form_errors(form.revenu_propre) %}
+                                    <div class="alert alert-danger">
+                                        {{ form_errors(form.revenu_propre) }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.montant_echeance) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                    {{ form_widget(form.montant_echeance, {'attr': {'class': 'form-control', 'placeholder': 'montant echeance'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.date_echeance) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.date_echeance, {'attr': {'class': 'form-control', 'placeholder': 'date_echeance','type': 'date'}}) }}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div id="progressBar" class="progress-bar green" style="width: 0%;     border-radius: 0.9rem;">0%</div>
+</div>
+<button type="button" class="{{ button_css|default('submitbtn') }}" onclick="creditscoring()">
+    <i class="fa fa-yelp"></i> Estimer Score !
+</button>
+
+        <button type="submit" class="{{ button_css|default('submitbtn') }}">
+            <i class="fa fa-plus"></i> {{ button_label|default('Ajouter'|trans) }}
+        </button>
+
+
+
+        
+       
+                    {# Ajout de la balise form_end pour terminer le formulaire #}
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+   
+    function creditscoring(){
+    var minScore = Infinity; // Initialiser à une valeur très grande
+    ///age 
+var select = document.getElementById("{{ form.id_compte.vars.id }}");
+        var selectedAge = select.options[select.selectedIndex].getAttribute('data-age');
+        var selectedSolde = select.options[select.selectedIndex].getAttribute('data-solde');
+        var selectedRevenu = select.options[select.selectedIndex].getAttribute('data-revenu');
+        // Mettre à jour la variable age en JavaScript avec la valeur sélectionnée
+        var age = selectedAge;
+        var solde = selectedSolde;
+              var revenu_bancaire = selectedRevenu;
+              console.log(revenu_bancaire);
+
+              ///
+              
+    var revenu_mensuel = document.getElementById('credit_revenu_propre').value;
+    var apport_propre = document.getElementById('credit_apport_propre').value;
+    
+    var duree = document.getElementById('credit_duree').value;
+    var montant = document.getElementById('credit_montant').value;
+    var taux = document.getElementById('credit_taux').value;
+    var mensualite = document.getElementById('credit_montant_echeance').value;
+    
+/* var age=1;
+    var solde=1000000000000000;
+    var revenu_bancaire=100000000000000000000000;
+    var revenu_mensuel=100000000000000000000000000;
+    var apport_propre=100000000000000000000000000;
+    var duree=1000000000;
+    var montant=1;
+    var taux=1;
+    var mensualite=100000000000000000000;*/
+   // maximum score dun credit est 24 (4.125 pour avoir 100%)
+  /* var age=10000;
+    var solde=1;
+    var revenu_bancaire=1;
+    var revenu_mensuel=1;
+    var apport_propre=1;
+    var duree=1;
+    var montant=10000000000000000000;
+    var taux=10000000;
+    var mensualite=0;*/
+// minimum score dun credit est -16
+
+    function calculateScore(ageCoeff, apportCoeff, revenuCoeff, montantCoeff, revenuBancaireCoeff) {
+        var score = 0;
+
+        //calcul score age////////////////////////////
+        if(age < 25){
+            score += 5 * ageCoeff;
+        } else if(age < 30){
+            score += 4 * ageCoeff;
+        } else if(age < 35){ 
+            score += 3 * ageCoeff;
+        } else if(age < 40){
+            score += 2 * ageCoeff;
+        } else if(age < 45){ 
+            score += 1 * ageCoeff;
+        } else if(age < 50){
+            score += 0 * ageCoeff;
+        } else if(age < 55){
+            score -= 1 * ageCoeff;
+        } else if(age < 60){ 
+            score -= 2 * ageCoeff;
+        } else if(age < 65){
+            score -= 3 * ageCoeff;
+        } else if(age < 70){
+            score -= 4 * ageCoeff;
+        } else {
+            score -= 5 * ageCoeff;
+        }
+
+        //////////////////::cal c ul score apport propre////////////////////////
+        if(apport_propre > montant*0.2){
+            score += 5 * apportCoeff;
+        } else if(apport_propre > montant*0.15){
+            score += 4 * apportCoeff;
+        } else if(apport_propre > montant*0.1){ 
+            score += 3 * apportCoeff;
+        } else if(apport_propre > montant*0.05){ 
+            score += 2 * apportCoeff;
+        } else if(apport_propre > montant*0.02){ 
+            score += 1 * apportCoeff;
+        } else if(apport_propre > montant*0.01){
+            score += 0 * apportCoeff;
+        } else if(apport_propre > montant*0.005){ 
+            score -= 1 * apportCoeff;
+        } else if(apport_propre > montant*0.002){
+            score -= 2 * apportCoeff;
+        } else if(apport_propre > montant*0.001){ 
+            score -= 3 * apportCoeff;
+        } else if(apport_propre > montant*0.0005){ 
+            score -= 4 * apportCoeff;
+        } else { 
+            score -= 5 * apportCoeff;
+        }
+
+        //////////////////calcul score revenu mensuel////////////////////////
+        if(revenu_mensuel > mensualite*0.5){
+            score += 5 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.4){
+            score += 4 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.3){ 
+            score += 3 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.2){ 
+            score += 2 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.1){ 
+            score += 1 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.05){
+            score += 0 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.02){ 
+            score -= 1 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.01){
+            score -= 2 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.005){ 
+            score -= 3 * revenuCoeff;
+        } else if(revenu_mensuel > mensualite*0.002){ 
+            score -= 4 * revenuCoeff;
+        } else { 
+            score -= 5 * revenuCoeff;
+        }
+
+        // Calcul du score en fonction du montant
+        if (montant > solde){
+            score -= 2 * montantCoeff;
+        } else if (montant > solde*0.5){
+            score += 1 * montantCoeff;
+        } else if (montant > solde*0.4){
+            score += 2 * montantCoeff;
+        } else if (montant > solde*0.3){
+            score += 3 * montantCoeff;
+        } else if (montant > solde*0.2){
+            score += 4 * montantCoeff;
+        } else if (montant > solde*0.1){ 
+            score += 5 * montantCoeff;
+        }
+
+        // revenu banccaire
+        if(revenu_bancaire > montant*taux/duree) {
+            score += 5 * revenuBancaireCoeff;
+        } else if(revenu_bancaire > montant*taux/(duree*2)) {
+            score += 3 * revenuBancaireCoeff;
+        } else if(revenu_bancaire > montant*taux/(duree*3)) {
+            score += 1 * revenuBancaireCoeff;
+        } else {
+            score -= 5 * revenuBancaireCoeff;
+        }
+
+        return score;
+    }
+
+    
+    var scores = [];
+
+    //coefficients
+    var coefficients = [
+        { age: 1, apport: 1, revenu: 1, montant: 1, revenuBancaire: 1 },
+        { age: 1, apport: 2, revenu: 1, montant: 2, revenuBancaire: 1 },
+        { age: 2, apport: 1, revenu: 2, montant: 1, revenuBancaire: 1 }
+       
+    ];
+
+    coefficients.forEach(function(coeff) {
+        var currentScore = calculateScore(coeff.age, coeff.apport, coeff.revenu, coeff.montant, coeff.revenuBancaire);
+        scores.push(currentScore);
+    });
+    //meanScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+    maxScore = Math.max(...scores);
+    minScore = Math.min(...scores);
+  let     score_final = maxScore*0.4 + minScore*0.6;
+  round_score = score_final.toFixed(0);
+  if(round_score < 0) {
+  round_score = 0;
+  }
+  else {
+    round_score = round_score*4.125;
+  }
+    console.log(round_score);
+     var progressBar = document.getElementById("progressBar");
+    progressBar.style.width = round_score + "%";
+    progressBar.innerHTML = round_score + "%";
+     if (round_score < 40) {
+        progressBar.classList.remove("orange", "green");
+        progressBar.classList.add("red");
+    } else if (round_score >= 40 && round_score <= 60) {
+        progressBar.classList.remove("red", "green");
+        progressBar.classList.add("orange");
+    } else {
+        progressBar.classList.remove("red", "orange");
+        progressBar.classList.add("green");
+    }
+    return round_score;
+}
+//max//console.log(creditscoring(0, 1000000, 10000000, 10, 100, 0.01, 1099900, 1000000000, 1000000000)); // 0
+//console.log(creditscoring(10000, 0,0, 0, 1, 10000000000, 0.1, 0, -110,-10000)); // 0
+
+    </script>
+    <script>
+ function updateAgeFromCompte() {
+        var select = document.getElementById("{{ form.id_compte.vars.id }}");
+        var selectedAge = select.options[select.selectedIndex].getAttribute('data-age');
+        var selectedSolde = select.options[select.selectedIndex].getAttribute('data-solde');
+        var selectedRevenu = select.options[select.selectedIndex].getAttribute('data-revenu');
+
+        // Mettre à jour les variables en JavaScript avec les valeurs sélectionnées
+        var age = selectedAge;
+        var solde = selectedSolde;
+        var revenu = selectedRevenu;
+
+        // Exemple d'utilisation de 'age', 'solde' et 'revenu'
+        console.log("Nouvel âge sélectionné :", age);
+        console.log("Solde du compte sélectionné :", solde);
+        console.log("Revenu du compte sélectionné :", revenu);
+    }
+</script>
+
+</article>
