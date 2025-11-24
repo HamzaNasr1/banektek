@@ -1,9 +1,11 @@
-# Ignorer les templates Twig dans les stats
+# Ignorer les templates Twig (HTML)
+templates/* linguist-detectable=false
 templates/** linguist-detectable=false
 
-# Optionnel : ignorer assets compilés
-public/build/** linguist-generated=true
+# Ignorer les fichiers HTML générés
+public/*.html linguist-detectable=false
+public/** linguist-detectable=false
 
-# Forcer certains dossiers si besoin
+# Marquer PHP (Symfony) comme langage principal
 src/** linguist-detectable=true
-assets/** linguist-detectable=true
+public/build/** linguist-generated=true
