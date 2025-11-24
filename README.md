@@ -32,7 +32,6 @@ L’app intègre aussi des services avancés : **FaceID login**, **OTP via Twili
 
 ### 🤖 IA / Scoring
 - Algorithme de **prédiction de credit score** pour aider à la décision d’octroi de crédit  
-  (modèle ML intégré côté back‑end)
 
 ### 🧾 Documents & Exports
 - Génération et impression **PDF** :
